@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw Milk Calculation Calculator</title>
+   <style>
+    /* style.css */
+
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+   </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Raw Milk Calculation Calculator</h1>
+        <form id="milkForm">
+            <div class="form-group">
+                <label for="milkPrice">Raw milk price per liter (PKR):</label>
+                <input type="number" step="0.01" id="milkPrice" name="milkPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="fatPercentage">Fat percentage:</label>
+                <input type="number" step="0.01" id="fatPercentage" name="fatPercentage" required>
+            </div>
+            <div class="form-group">
+                <label for="volume">Milk volume (liters):</label>
+                <input type="number" step="0.01" id="volume" name="volume" required>
+            </div>
+            <button type="button" id="calculateButton">Calculate</button>
+        </form>
+        <div id="result">
+            <p>Calculation results:</p>
+            <ul>
+                <li>Fat content (grams): <span id="fatContent"></span></li>
+                <li>Calories (kcal): <span id="calories"></span></li>
+                <li>Protein (grams): <span id="protein"></span></li>
+                <li>Carbohydrates (grams): <span id="carbohydrates"></span></li>
+                <li>Calcium (mg): <span id="calcium"></span></li>
+                <li>Vitamin D (IU): <span id="vitaminD"></span></li>
+            </ul>
+        </div>
+        <li>Total cost (PKR): <span id="totalCost"></span></li>
+
+    </div>
+
+    <script >// script.js
+
+//        // script.js
+//        const milkPrice = parseFloat(document.getElementById('milkPrice').value);
+// const totalCost = volume * milkPrice;
+
+
+// const milkForm = document.getElementById('milkForm');
+// const calculateButton = document.getElementById('calculateButton');
+// const resultDiv = document.getElementById('result');
+
+// const calculate = () => {
+//   const milkPrice = parseFloat(document.getElementById('milkPrice').value);
+//   const fatPercentage = parseFloat(document.getElementById('fatPercentage').value);
+//   const volume = parseFloat(document.getElementById('volume').value);
+
+//   const fatContent = volume * fatPercentage * 10;
+//   const calories = volume * 66.5 + fatContent * 9;
+//   const protein = volume * 3.3;
+//   const carbohydrates = volume * 4.9;
+//   const calcium = volume * 300;
+
+//   // Initialize vitaminD with a value of 0
+//   const vitaminD = 0;
+
+//   updateResult(fatContent, calories, protein, carbohydrates, calcium, vitaminD);
+// };
+
+// const updateResult = (fatContent, calories, protein, carbohydrates, calcium, vitaminD) => {
+//   document.getElementById('fatContent').textContent = fatContent.toFixed(2);
+//   document.getElementById('calories').textContent = calories.toFixed(2);
+//   document.getElementById('protein').textContent = protein.toFixed(2);
+//   document.getElementById('carbohydrates').textContent = carbohydrates.toFixed(2);
+//   document.getElementById('calcium').textContent = calcium.toFixed(2);
+//   document.getElementById('vitaminD').textContent = vitaminD.toFixed(2);
+//   const updateResult = (fatContent, calories, protein, carbohydrates, calcium, vitaminD) => {
+//   document.getElementById('fatContent').textContent = fatContent.toFixed(2);
+//   document.getElementById('calories').textContent = calories.toFixed(2);
+//   document.getElementById('protein').textContent = protein.toFixed(2);
+//   document.getElementById('carbohydrates').textContent = carbohydrates.toFixed(2);
+//   document.getElementById('calcium').textContent = calcium.toFixed(2);
+//   document.getElementById('vitaminD').textContent = vitaminD.toFixed(2);
+//   document.getElementById('totalCost').textContent = totalCost.toFixed(2);
+// };
+
+// };
+
+
+// calculateButton.addEventListener('click', calculate);
+// script.js
+
+const milkForm = document.getElementById('milkForm');
+const calculateButton = document.getElementById('calculateButton');
+const resultDiv = document.getElementById('result');
+
+const calculate = () => {
+    const milkPrice = parseFloat(document.getElementById('milkPrice').value);
+    const fatPercentage = parseFloat(document.getElementById('fatPercentage').value);
+    const volume = parseFloat(document.getElementById('volume').value);
+
+    const fatContent = volume * fatPercentage * 10;
+    const calories = volume * 66.5 + fatContent * 9;
+    const protein = volume * 3.3;
+    const carbohydrates = volume * 4.9;
+    const calcium = volume * 300;
+
+    // Initialize vitaminD with a value of 0
+    const vitaminD = 0;
+
+    // Calculate the total cost
+    const totalCost = volume * milkPrice;
+
+    updateResult(fatContent, calories, protein, carbohydrates, calcium, vitaminD, totalCost);
+};
+
+const updateResult = (fatContent, calories, protein, carbohydrates, calcium, vitaminD, totalCost) => {
+    document.getElementById('fatContent').textContent = fatContent.toFixed(2);
+    document.getElementById('calories').textContent = calories.toFixed(2);
+    document.getElementById('protein').textContent = protein.toFixed(2);
+    document.getElementById('carbohydrates').textContent = carbohydrates.toFixed(2);
+    document.getElementById('calcium').textContent = calcium.toFixed(2);
+    document.getElementById('vitaminD').textContent = vitaminD.toFixed(2);
+    document.getElementById('totalCost').textContent = totalCost.toFixed(2);
+};
+
+calculateButton.addEventListener('click', calculate);
+
+
+        </script>
+</body>
+</html>
